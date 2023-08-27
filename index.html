@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Let's Chat</title>
     <link rel="stylesheet" href="/style.css">
+    <!-- <link rel="stylesheet" href="public/style.css"> -->
 </head>
 <body>
     <div class="chatPage">
         <div class="chatContainer">
             
             <div class="header">
-                <h2>Let's Chat</h2>
+                <h2>Let's Chat by AJ</h2>
                 <a href="http://localhost:8000/"> <img src="/images/closeIcon.png" alt="Close" /></a>
             </div>
             
@@ -20,19 +21,23 @@
                 <div class="messageBox center">
                     <b>Hi, Welcome to the Global Chat. <br>Don't share your personal information. </b>
                 </div>
+                <div class="messageBox right">
+                    <h3>AJ</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit sint repellendus nobis impedit inventore, nemo nesciunt aliquam deleniti saepe enim!</p>
+                </div>
+                <div class="messageBox left">
+                    <h3>BJ</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit sint repellendus nobis impedit inventore, nemo nesciunt aliquam deleniti saepe enim!</p>
+                </div>
             </div>
 
             <div class="inputBox">
-                
-                    <input  type="text" id="messageInput" />
-                    
+                    <input  type="text" id="messageInput" placeholder="Write message"/>       
                     <button class="sendBtn" onclick="sendMessageTrigger()">
                         <img src="images/send.png" alt="Send"/>
                     </button>
-                    
-                </div>
-                
-            </div>
+            </div>     
+        </div>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>

@@ -23,8 +23,9 @@ const users = {};
 io.on('connection', (socket) => {
 
     socket.on('new-user-joined', (name) => {
-        console.log('New User:', name);
+        console.log('New User: ', name);
         users[socket.id] = name;
+        socket.emit('connectMe',name);
         socket.broadcast.emit('user-joined', name);
     });
 
@@ -33,6 +34,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('disconnect', () => {
+        console.log('User Left: ', users[socket.id]);
         socket.broadcast.emit('left', users[socket.id]);
         delete users[socket.id];
     });

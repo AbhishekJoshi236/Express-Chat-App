@@ -14,13 +14,15 @@ function sendMessageTrigger() {
     const msg = messageInput.value;
     messageInput.value = "";
 
-    let data = {
-        user: name,
-        message: msg
+    if(msg.length != 0){
+        let data = {
+            user: name,
+            message: msg
+        }
+        appendMessage(data, 'right');
+        scrollToBottom();
+        socket.emit('send', data);
     }
-    appendMessage(data, 'right');
-    scrollToBottom();
-    socket.emit('send', data);
 }
 
 const appendMessage = (data, position) => {
@@ -48,6 +50,11 @@ socket.emit("new-user-joined", name);
 
 
 //RECEIVING
+socket.on('connectMe',name => {
+    appendMessageLeaveJoin(`You joined the chat.`);
+    scrollToBottom();
+
+})
 socket.on('user-joined', name => {
     appendMessageLeaveJoin(`${name} joined the chat.`);
     scrollToBottom();
@@ -62,10 +69,9 @@ socket.on('receive', data => {
 socket.on('left', name => {
     appendMessageLeaveJoin(`${name} left the chat.`);
     scrollToBottom();
-
 })
 
-
+//chats remains at bottom
 function scrollToBottom(){
     messageContainer.scrollTop = messageContainer.scrollHeight;
 }
